@@ -1,0 +1,17 @@
+@import "./variables/borderRadius";
+@import "./variables/colors";
+@import "./variables/fonts";
+@import "./variables/global";
+@import "./variables/mediaqueries";
+@import "./variables/spacing";
+@import "./variables/typography";
+
+$base-font-size: 16px;
+
+@function rem($value) {
+  $rem-value: $value / $base-font-size;
+  @if unitless($value) {
+    $rem-value: #{$rem-value}rem;
+  }
+  @return $rem-value;
+}

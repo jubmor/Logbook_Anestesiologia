@@ -1,0 +1,41 @@
+@import "@/styles/variables";
+
+.record-tab-selector-container {
+  margin-bottom: $margin-md;
+
+  position: sticky;
+  top: 0;
+  background: $background-color;
+  z-index: 99;
+  padding-bottom: $padding-md;
+
+  &__wrapper {
+    border-bottom: 1px solid $border;
+
+    &__error {
+      .MuiTabs-indicator {
+        background-color: $error !important;
+      }
+    }
+
+    &__form_error {
+      border-bottom-color: $error !important;
+      background: $error_bg !important;
+      color: $error !important;
+    }
+  }
+
+  &__risk_avaluation_container {
+    padding: $padding-md;
+    border-radius: $border-radius-md;
+    background-color: $warning_bg;
+    margin-bottom: $margin-md;
+    box-shadow: $box-shadow-md;
+
+    h6 {
+      margin-bottom: $margin-md;
+      font-size: 18px;
+      color: $warning;
+    }
+  }
+}

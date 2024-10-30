@@ -1,0 +1,76 @@
+@import "@/styles/variables";
+
+.screen_header_container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: hidden;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $padding-md;
+    box-shadow: $box-shadow-md;
+    margin-bottom: $margin-md;
+
+    &__title_container {
+      p {
+        color: $textsecondary;
+      }
+
+      &__wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 10px;
+      }
+    }
+
+    &__actions_container {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+
+      > .action_btn {
+        min-height: 0px;
+        padding: $padding-sm $padding-lg !important;
+      }
+    }
+
+    &__no_title {
+      box-shadow: none;
+      padding-top: 0;
+      margin-bottom: $margin-xs;
+    }
+  }
+
+  &__mobile_container {
+    display: flex;
+    align-items: center;
+
+    gap: $spacing-md;
+
+    @include sm {
+      gap: $spacing-md;
+    }
+
+    &__first_action {
+      display: flex;
+      align-items: center;
+      background: $primary;
+      padding: $padding-xs;
+      border-radius: $border-radius-lg;
+      box-shadow: $box-shadow-md;
+
+      svg {
+        color: white;
+      }
+
+      @include sm {
+        padding: $padding-sm;
+      }
+    }
+  }
+}

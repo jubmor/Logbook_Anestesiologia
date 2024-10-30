@@ -1,0 +1,58 @@
+@import "@/styles/variables";
+
+.records_container {
+  &__filters_container {
+    display: flex;
+
+    align-content: center;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    gap: 20px;
+
+    &__search_input {
+      box-shadow: $box-shadow-sm;
+    }
+
+    &__search_input_container {
+      margin: 0px !important;
+      @include md {
+        max-width: 500px;
+      }
+    }
+
+    &__more_filters_btn {
+      border: 1px solid $border;
+      //box-shadow: $box-shadow-md;
+      align-content: center;
+      border-radius: $border-radius-full;
+      background: $white;
+      transition: $transition-duration;
+
+      &:hover {
+        border-color: $primary;
+      }
+    }
+  }
+
+  &__body_wrapper {
+    &__container {
+      flex: 1;
+      overflow-y: auto;
+
+      &__header {
+        background: $background-color;
+        position: sticky;
+        top: 0;
+      }
+
+      &__row {
+        svg {
+          color: $primary;
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+@import "@/styles/variables";
+
+.input-container {
+  //width: 100%;
+  //  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  //  border-radius: 4px;
+  //  background: white;
+  top: -5;
+  p {
+    font-size: $text-sm;
+    color: $gray;
+    transition: $transition-duration_02;
+  }
+
+  &:focus-within p,
+  &:hover p {
+    color: $primary_dark_15;
+    font-weight: bold;
+  }
+
+  &__error {
+    color: $error;
+    font-weight: $semibold;
+    font-size: $text-sm;
+  }
+
+  &__required-indicator {
+    color: $error;
+    margin-left: 4px;
+    font-weight: bold;
+  }
+
+  &__label_wrapper {
+    display: flex;
+  }
+}
+
+.date_picker_error {
+  .datePicker {
+    fieldset {
+      border: 1px solid $error;
+    }
+  }
+}

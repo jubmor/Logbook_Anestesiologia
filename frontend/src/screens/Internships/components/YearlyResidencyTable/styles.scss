@@ -1,0 +1,211 @@
+@import "@/styles/variables";
+
+.pointer {
+  width: 40px;
+  height: 40px;
+  background-color: #2952e1;
+  // //  top: 33px;
+  position: relative;
+  left: -250px;
+  z-index: 2;
+}
+
+.table-container {
+  height: 100%;
+  overflow: hidden;
+  padding: 10px;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+
+  &__table__header_wrapper {
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    min-height: 30px;
+
+    border: 1px solid $border;
+    border-top-left-radius: $border-radius-md;
+    border-top-right-radius: $border-radius-md;
+  }
+
+  &__table_wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: $white;
+    border-bottom-left-radius: $border-radius-lg;
+    border-bottom-right-radius: $border-radius-lg;
+    box-shadow: $box-shadow-md;
+    white-space: nowrap;
+    overflow: auto;
+
+    //overflow: hidden;
+
+    &__event_row,
+    &__header_row {
+      box-sizing: border-box;
+      > :first-child {
+        position: sticky;
+        left: 0;
+        background: $white;
+      }
+
+      width: max-content;
+      display: flex;
+      overflow-x: hidden;
+      flex-wrap: nowrap;
+      background-color: $white;
+
+      overflow-x: visible;
+      top: 0;
+
+      &__month_container_body,
+      &__month_container {
+        width: 120px;
+        user-select: none;
+        @include md {
+          width: 180px;
+        }
+        @include lg {
+          width: 250px;
+        }
+      }
+    }
+
+    &__header_row {
+      > :first-child {
+        box-sizing: border-box;
+        background: $white;
+        z-index: 99;
+
+        width: 119px;
+        user-select: none;
+        @include md {
+          width: 179px;
+        }
+        @include lg {
+          width: 249px;
+        }
+      }
+      :not(:last-child) {
+        border-right: 1px solid $border;
+      }
+
+      &__month_container {
+        display: flex;
+        align-items: center;
+
+        &__month {
+          padding: 0 $padding-md;
+          margin-left: $margin-sm;
+          font-weight: 700;
+          color: $text;
+          font-size: $text-sm;
+        }
+
+        &__quarters_container {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+
+          &__quarter {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $textsecondary;
+            font-size: $text-sm;
+          }
+        }
+      }
+    }
+
+    &__event_row {
+      position: relative;
+      height: max-content;
+
+      &__months_block {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #bbd1f6;
+        box-sizing: border-box;
+        :first-child {
+          background: #d0def5;
+        }
+
+        &__space {
+          border-right: 1px solid #bbd1f6;
+          width: 100%;
+          height: 100%;
+          background: #dee8f9;
+        }
+      }
+
+      &__container {
+        position: relative;
+        display: flex;
+        height: 100%;
+        flex-direction: row;
+        align-items: center;
+      }
+
+      &__event_cards {
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: auto;
+
+        &__wrapper {
+          padding: $padding-md 0;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+      }
+
+      &__event_title {
+        border: 1px solid $border;
+        border-top: none;
+        height: 100%;
+        padding: $padding-sm;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        position: relative;
+        box-sizing: border-box;
+        @include lg {
+          padding: $padding-md;
+        }
+
+        h5 {
+          font-weight: 700;
+          color: $text;
+          font-size: $text-sm;
+        }
+        p {
+          font-weight: 500;
+          color: $primary_dark_15;
+          font-size: $text-xs;
+        }
+      }
+
+      &__event_card {
+        user-select: none;
+        position: relative;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 5px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: auto;
+        box-shadow: $box-shadow-md;
+        border-left: 4px solid $primary_dark_15;
+        height: 70%;
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+@import "@/styles/variables";
+
+.record_status_item {
+  &__archived,
+  &__in_progress {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    padding: $padding-sm $padding-md;
+    border-radius: $border-radius-2xl;
+    font-size: $text-xs;
+    font-weight: $semibold;
+    gap: 8px;
+  }
+
+  &__archived {
+    background-color: $blue_bg;
+    color: $blue;
+  }
+  &__in_progress {
+    background-color: $dark_yellow_bg;
+    color: $dark_yellow;
+  }
+}
+
+.status_badge {
+  &__archived,
+  &__in_progress {
+    padding: 5px;
+  }
+  &__in_progress {
+    background-color: $dark_yellow;
+    border-radius: $border-radius-full;
+  }
+
+  &__archived {
+    background-color: $blue;
+  }
+}

@@ -1,0 +1,44 @@
+$white: #fff;
+$black: #000;
+$black_02: rgba(0, 0, 0, 0.2);
+$primary: #4fd1c5;
+$primary_dark_15: darken($primary, 15%);
+$primary_dark_20: darken($primary, 20%);
+
+$text: #2d3748;
+$textsecondary: #a0aec0;
+$textlight: #718096;
+$lightgrey: #c5cad0;
+$lightgrey_05: rgb(197, 202, 208, 0.5);
+
+$border: #a0aec0;
+
+$red: #cc0905;
+$red_bg: #ffefeb;
+$blue: #0452c8;
+$blue_bg: #ebf7ff;
+$green: #119c2b;
+$green_bg: #ebfff1;
+$dark_yellow: #835101;
+$dark_yellow_bg: #fffcc2;
+$purple: #7e10e5;
+$purple_bg: #fcf0ff;
+$teal_green: #0d9676;
+$teal_green_bg: #e4fcfc;
+$coal: #252c32;
+$coal_bg: #252c32;
+
+$warning: #d2968c;
+$warning_bg: rgb(255, 244, 229);
+$gray: #666666;
+$error: #d32f2f;
+$error_bg: #fdecea;
+
+$in_progress: #fbbf24;
+$in_progress_text: #92400e;
+$archived: #e7eaee;
+$archived_text: #64748b;
+
+$background-color: #f8f9fa;
+
+// Create a MUI theme object with your custom colors

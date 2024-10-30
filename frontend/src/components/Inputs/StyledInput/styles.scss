@@ -1,0 +1,40 @@
+@import "@/styles/variables";
+
+.input {
+  width: 100%;
+  background: $white;
+  border-radius: $border-radius-4xl;
+
+  .MuiInputBase-input::placeholder {
+    color: $textsecondary;
+    font-size: $text-sm;
+    font-style: italic;
+    opacity: 1;
+  }
+
+  .MuiTextField-root {
+    display: none;
+  }
+
+  label.Mui-focused {
+    color: $primary;
+  }
+
+  .MuiInput-underline:after {
+    border-bottom-color: $primary;
+  }
+  .MuiOutlinedInput-notchedOutline legend {
+    > span {
+      display: none;
+    }
+  }
+  .MuiOutlinedInput-root {
+    //  border-radius: $border-radius-4xl;
+    &:hover fieldset {
+      border-color: $primary;
+    }
+    &.Mui-focused fieldset {
+      border-color: $primary;
+    }
+  }
+}

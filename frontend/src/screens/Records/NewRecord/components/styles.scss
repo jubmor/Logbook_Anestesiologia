@@ -1,0 +1,37 @@
+@import "@/styles/variables";
+
+.new_record_form {
+  &__header {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+    margin-bottom: $margin-md;
+
+    @include md {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 20px;
+
+      .input_proccess,
+      .input_episode {
+        flex: 1 1 48%;
+      }
+
+      .input_selector,
+      .input_proccess,
+      .input_episode {
+        margin-bottom: 0px;
+      }
+    }
+
+    @include lg {
+      .input_selector,
+      .input_proccess,
+      .input_episode {
+        flex-wrap: wrap;
+        flex: 1;
+      }
+    }
+  }
+}

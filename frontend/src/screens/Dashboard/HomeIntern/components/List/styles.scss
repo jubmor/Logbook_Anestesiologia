@@ -1,0 +1,10 @@
+@import "@/styles/variables";
+
+.list-item {
+  display: flex;
+  margin-bottom: $margin-sm;
+  width: 100%;
+  border-bottom: 1px solid $lightgrey_05;
+  padding: $padding-sm;
+  cursor: pointer;
+}

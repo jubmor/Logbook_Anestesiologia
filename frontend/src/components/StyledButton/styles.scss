@@ -1,0 +1,12 @@
+@import "@/styles/variables";
+
+.MuiButton-root {
+  border-radius: $border-radius-4xl;
+}
+.MuiButton-contained {
+  border-radius: $border-radius-4xl;
+}
+
+.styled_button__container {
+  box-shadow: $box-shadow-md;
+}

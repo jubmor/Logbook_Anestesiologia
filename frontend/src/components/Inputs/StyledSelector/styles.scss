@@ -1,0 +1,8 @@
+@import "@/styles/variables";
+
+.input_selector {
+  &__placeholder {
+    color: $textsecondary;
+    font-size: $text-sm;
+  }
+}
