@@ -18,6 +18,7 @@ import {
 } from "react-hook-form";
 
 import "./styles.scss";
+import SelectAndSearch from "../Inputs/SelectAndSearch";
 
 type GenerateFormProps = {
   defaultValues?: FieldValues;
@@ -146,6 +147,21 @@ const RenderFormInputs = forwardRef(
           multiple={formInput?.multiple}
         />
       );
+    } else if (type === "select_and_search") {
+      return (
+        <SelectAndSearch
+          required={formInput.rules?.required as boolean}
+          //  id={formInput.label}
+          key={formInput.form}
+          label={formInput.label}
+          options={formInput.options}
+          {...field}
+          ref={ref}
+          error={!!error}
+          errorText={error as string}
+          multiple={formInput?.multiple}
+        />
+      );
     } else {
       return (
         <StyledInput
@@ -171,6 +187,11 @@ export interface SelectInputForm extends DefaultFormProps {
   multiple?: boolean;
   options: { value: string; label: string }[];
 }
+export interface SelectAndSearchInputForm extends DefaultFormProps {
+  type: "select_and_search";
+  multiple?: boolean;
+  options: { value: string; label: string }[];
+}
 
 export interface InputRegisterForm extends DefaultFormProps {
   type: "number" | "text" | "email" | "password" | "date" | "file" | "tel";
@@ -190,6 +211,7 @@ export interface DateTimeInputForm extends DefaultFormProps {
 export type RecordFormDataType =
   | InputRegisterForm
   | SelectInputForm
+  | SelectAndSearchInputForm
   | DateInputForm
   | DateTimeInputForm;
 

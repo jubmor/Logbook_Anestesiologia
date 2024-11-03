@@ -106,7 +106,7 @@ export const RENDER_RISK_EVALUATION_FORM: RecordFormDataType[] = [
   {
     form: "otherStigmas",
     label: "Outros Estigmas",
-    type: "select",
+    type: "select_and_search",
     multiple: true,
     options: [
       { label: "Micrognatia", value: "Micrognatia" },
@@ -115,7 +115,7 @@ export const RENDER_RISK_EVALUATION_FORM: RecordFormDataType[] = [
       { label: "Cirurgia prévia ao pescoço", value: "Cirurgia prévia ao pescoço" },
       { label: "Circunferência do pescoço > 42 cm", value: "Circunferência do pescoço > 42 cm" },
       { label: "SAOS", value: "SAOS" },
-      { label: "Sindrome crânio-facial", value: "Circunferência do pescoço > 42 cm" }
+      { label: "Sindrome crânio-facial", value: "Sindrome crânio-facial" }
     ],
     rules: {}
   },
@@ -129,7 +129,7 @@ export const RENDER_RISK_EVALUATION_FORM: RecordFormDataType[] = [
   {
     form: "riscPrevisibility",
     label: "Previsibilidade de Risco",
-    type: "select",
+    type: "select_and_search",
     multiple: true,
     options: [
       { label: "Ventilação com Máscara Facial", value: "Ventilação com Máscara Facial" },
@@ -155,7 +155,7 @@ export const RENDER_RISK_EVALUATION_FORM: RecordFormDataType[] = [
   {
     form: "surgicalRisk",
     label: "Risco cirúrgico",
-    type: "select",
+    type: "select_and_search",
     multiple: true,
     options: [
       { label: "Baixo risco ( <1% )", value: "Baixo risco ( <1% )" },
@@ -170,8 +170,8 @@ export const RENDER_RISK_EVALUATION_FORM: RecordFormDataType[] = [
   {
     form: "apfelScore",
     label: "Apfel score",
-    type: "select",
-    multiple: true,
+    type: "select_and_search",
+    multiple: false,
     options: [
       { label: "0", value: "0" },
       { label: "1", value: "1" },
@@ -184,8 +184,8 @@ export const RENDER_RISK_EVALUATION_FORM: RecordFormDataType[] = [
   {
     form: "captiniScore",
     label: "Caprini score",
-    type: "select",
-    multiple: true,
+    type: "select_and_search",
+    multiple: false,
     options: [
       { label: "0 (risco mínimo)", value: "0 (risco mínimo)" },
       { label: "1-2 (risco mínimo)", value: "1-2 (risco mínimo)" },
@@ -199,8 +199,8 @@ export const RENDER_RISK_EVALUATION_FORM: RecordFormDataType[] = [
   {
     form: "CHA2DS2-VASc",
     label: "CHA2DS2-VASc",
-    type: "select",
-    multiple: true,
+    type: "select_and_search",
+    multiple: false,
     options: [
       { label: "0", value: "0" },
       { label: "1", value: "1" },
@@ -215,8 +215,8 @@ export const RENDER_RISK_EVALUATION_FORM: RecordFormDataType[] = [
   {
     form: "ARISCATscore",
     label: "ARISCAT score",
-    type: "select",
-    multiple: true,
+    type: "select_and_search",
+    multiple: false,
     options: [
       { label: "< 25 (risco baixo 1-6%)", value: "< 25 (risco baixo 1-6%)" },
       { label: "26 - 44 (risco intermédio 13.3%)", value: "26 - 44 (risco intermédio 13.3%)" },
@@ -227,8 +227,8 @@ export const RENDER_RISK_EVALUATION_FORM: RecordFormDataType[] = [
   {
     form: "leeRevisedCardiacRisk",
     label: "Lee Revised Cardiac Risk",
-    type: "select",
-    multiple: true,
+    type: "select_and_search",
+    multiple: false,
     options: [
       { label: "0 (3.9%)", value: "0 (3.9%)" },
       { label: "1 (6.0%)", value: "1 (6.0%)" },
@@ -287,8 +287,8 @@ export const RENDER_RISK_EVALUATION_FORM: RecordFormDataType[] = [
   {
     form: "uciVacancyRequest",
     label: "Pedido Vaga UCI",
-    type: "select",
-    multiple: true,
+    type: "select_and_search",
+    multiple: false,
     options: [
       { label: "Não", value: "Não" },
       { label: "Internédios", value: "Internédios" },
@@ -299,8 +299,8 @@ export const RENDER_RISK_EVALUATION_FORM: RecordFormDataType[] = [
   {
     form: "bloodComponents",
     label: "Camponentes sanguíneos",
-    type: "select",
-    multiple: true,
+    type: "select_and_search",
+    multiple: false,
     options: [
       { label: "Tipagem GR", value: "Tipagem GR" },
       { label: "Reserva GR", value: "Reserva GR" },

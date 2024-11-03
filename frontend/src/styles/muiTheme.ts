@@ -97,6 +97,17 @@ export const theme = createTheme({
         }
       }
     },
+
+    MuiAutocomplete: {
+      styleOverrides: {
+        root: {
+          borderRadius: "4px",
+          background: "white"
+        },
+
+        tag: "none"
+      }
+    },
     MuiButton: {
       styleOverrides: {
         root: {

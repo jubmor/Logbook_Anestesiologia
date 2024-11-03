@@ -12,7 +12,7 @@ import { showToaster } from "@/store/features/toaster/module";
 import { useAppDispatch } from "@/store/hooks";
 
 import request from "@/config/interceptors";
-import { END_POINT } from "@/config/endpoints";
+import { BASE_API, END_POINT } from "@/config/endpoints";
 
 import "./styles.scss";
 

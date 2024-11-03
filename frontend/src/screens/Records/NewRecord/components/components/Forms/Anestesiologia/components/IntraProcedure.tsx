@@ -76,7 +76,7 @@ const RENDER_GERAL_FORM: RecordFormDataType[] = [
   }, */
   {
     form: "procedureDate33131",
-    label: "Data do Procedimento1313 ",
+    label: "Data do Procedimento",
     type: "dateTime",
     rules: { required: "Este campo é obrigatório" }
   }
