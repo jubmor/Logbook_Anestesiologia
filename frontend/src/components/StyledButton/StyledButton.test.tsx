@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import StyledButton from "./";
 import { describe, expect, test, vi } from "vitest";
 
-describe("StyledButton Component", () => {
+describe("StyledButton Component test", () => {
   const defaultProps = {
     text: "Default Button",
     type: "button" as const,

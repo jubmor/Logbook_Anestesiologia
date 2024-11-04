@@ -14,19 +14,19 @@ interface DefaultButtonProps {
 }
 
 interface SubmitFormButtonProps extends DefaultButtonProps {
-  type: "submit"; // Submit buttons should not have an onClick prop
+  type: "submit";
   onClick?: never;
 }
 
 interface InteractionButtonProps extends DefaultButtonProps {
-  type?: "button" | "reset"; // Interaction buttons have onClick
+  type?: "button" | "reset";
   onClick: () => void;
 }
 
 type Props = SubmitFormButtonProps | InteractionButtonProps;
 
 const StyledButton: React.FC<Props> = ({
-  type = "button", // Default type is button
+  type = "button",
   variant,
   disabled = false,
   onClick,
@@ -41,7 +41,7 @@ const StyledButton: React.FC<Props> = ({
         type={type}
         variant={variant ?? "contained"}
         disabled={disabled}
-        onClick={type !== "submit" ? onClick : undefined} // Prevent onClick for submit buttons
+        onClick={type !== "submit" ? onClick : undefined}
         startIcon={startIcon}
         endIcon={endIcon}
         className={className}

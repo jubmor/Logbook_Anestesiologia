@@ -9,7 +9,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import InputWrapper from "../InputWrapper";
 
-interface Props {
+export type Props = {
   id: string;
   type: "text" | "password" | "email" | "number" | "date" | "file" | "tel";
   label?: string;
@@ -30,7 +30,7 @@ interface Props {
   noBorder?: boolean;
   required?: boolean;
   ref?: React.ForwardedRef<unknown>;
-}
+};
 
 export type AutoCompleteOptions =
   | "on"

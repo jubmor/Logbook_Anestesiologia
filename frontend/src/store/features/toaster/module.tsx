@@ -2,7 +2,7 @@ import { statusToString } from "@/hooks/helperFunctions";
 import { SnackbarOrigin } from "@mui/material";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type toasterProps = {
+export type toasterProps = {
   toaster: ToasterOptionProps;
 };
 
