@@ -23,6 +23,7 @@ const MobileActionMenu = ({ actions }: Props) => {
     <div className="screen_header_container__mobile_container">
       {firstAction && (
         <div
+          data-testid="first-action"
           onClick={firstAction.onClick}
           className={`screen_header_container__mobile_container__first_action`}
         >
@@ -31,6 +32,7 @@ const MobileActionMenu = ({ actions }: Props) => {
       )}
       {secondAction && (
         <div
+          data-testid="second-action"
           onClick={secondAction.onClick}
           className={`screen_header_container__mobile_container__first_action`}
         >

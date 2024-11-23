@@ -1,0 +1,70 @@
+@import "@/styles/variables";
+
+.record-tab-selector-container {
+  margin-bottom: $margin-md;
+
+  position: sticky;
+  top: 0;
+  background: $background-color;
+  z-index: 99;
+  padding-bottom: $padding-md;
+
+  &__wrapper {
+    border-bottom: 1px solid $border;
+
+    &__error {
+      .MuiTabs-indicator {
+        background-color: $error !important;
+      }
+    }
+
+    &__form_error {
+      border-bottom-color: $error !important;
+      background: $error_bg !important;
+      color: $error !important;
+    }
+  }
+
+  &__form_container,
+  &__risk_avaluation_container {
+    padding: $padding-md;
+    border-radius: $border-radius-md;
+    margin-bottom: $margin-md;
+    box-shadow: $box-shadow-md;
+    border: 1px solid $lightgrey_05;
+    h6 {
+      font-weight: $medium;
+      margin-bottom: $margin-md;
+      font-size: $text-lg;
+    }
+
+    /* .MuiOutlinedInput-root {
+      background: $background-color !important;
+    } */
+  }
+
+  &__form_container {
+    background-color: $white;
+
+    h4 {
+      color: $text;
+    }
+  }
+
+  &__risk_avaluation_container {
+    background-color: $warning_bg;
+
+    h6 {
+      color: $warning;
+    }
+  }
+
+  &__counter_container {
+    position: sticky;
+    top: 36px;
+    z-index: 12;
+
+    background-color: $background-color;
+    padding-bottom: $spacing-md;
+  }
+}

@@ -1,0 +1,86 @@
+@import "@/styles/variables";
+
+.record-tab-selector-container {
+  &__post_op_container {
+    overflow: auto;
+
+    &__title {
+      font-size: $text-md;
+      margin-bottom: $spacing-md;
+      font-weight: $medium;
+      color: $text;
+      text-align: left;
+    }
+
+    &__counter_container {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 16px;
+
+      &__counter {
+        padding: $padding-sm;
+        width: 70px;
+        user-select: none;
+        border: 1.5px solid $textsecondary;
+        border-radius: $border-radius-lg;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $white;
+      }
+
+      &__btn {
+        display: flex;
+        align-items: center;
+        background: $primary;
+        padding: $padding-xs;
+        border-radius: $border-radius-lg;
+        box-shadow: $box-shadow-md;
+        transition: $transition-duration;
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        &:active {
+          opacity: 0.6;
+          transform: scale(0.95);
+        }
+
+        svg {
+          color: white;
+        }
+
+        &.disabled {
+          background: $textsecondary;
+          cursor: not-allowed;
+          box-shadow: none;
+
+          &:hover,
+          &:active {
+            background: $textsecondary;
+            opacity: 1;
+            transform: none;
+          }
+        }
+      }
+    }
+
+    &__complication_form_container {
+      //  background: $white;
+      padding: $spacing-md;
+      border-radius: $border-radius-lg;
+      margin-bottom: $spacing-lg;
+      box-shadow: $box-shadow-sm;
+      border: 1px solid $border;
+
+      h4 {
+        font-weight: $medium;
+        margin-bottom: $spacing-md;
+        font-size: $text-lg;
+        color: $text;
+      }
+    }
+  }
+}

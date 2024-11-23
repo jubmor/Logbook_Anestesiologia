@@ -3,7 +3,7 @@ import React from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 
 import { Alert, Snackbar } from "@mui/material";
-import { showToaster } from "@/store/features/toaster/module";
+import { showToaster } from "@/store/toaster/module";
 
 const Toaster = () => {
   const dispatch = useAppDispatch();
@@ -24,7 +24,7 @@ const Toaster = () => {
   return (
     <Snackbar
       open={isVisible}
-      autoHideDuration={7000}
+      autoHideDuration={5000}
       onClose={handleClose}
       anchorOrigin={position ? position : { vertical: "top", horizontal: "right" }}
     >

@@ -46,7 +46,7 @@ const UserView = ({ routes, user }: { routes: RouteProps[]; user: UserProps }) =
             {routes &&
               routes.map((route) => {
                 return (
-                  <Route key={route.path} element={<ProtectedRoute type={user.usertype} />}>
+                  <Route key={route.path} element={<ProtectedRoute type={user.user_type} />}>
                     <Route path={route.path} element={<AnimatedRoute route={route} />}>
                       {route.children &&
                         route.children.map((child) => (

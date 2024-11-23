@@ -7,6 +7,7 @@ import intern from "./schema/intern";
 import tutor from "./schema/tutor";
 import sharedBetweenUsers from "./schema/sharedBetweenUsers";
 import shared from "./schema/shared";
+import admin from "./schema/admin";
 
 export type RouteProps = {
   path: string;
@@ -19,23 +20,27 @@ export type RouteProps = {
   children?: RouteProps[];
 };
 
-const routes: { [key in UserType | "noUser" | "sharedBetweenUsers" | "shared"]: RouteProps[] } = {
+const routes: {
+  [key in UserType | "noUser" | "sharedBetweenUsers" | "shared" | "admin"]: RouteProps[];
+} = {
   noUser,
   intern,
   tutor,
   sharedBetweenUsers,
-  shared
+  shared,
+  admin
 };
 
-export const getRoutes = (user: UserProps | undefined) => {
+export const getRoutes = (user: UserProps | null) => {
   const { noUser, intern, tutor, sharedBetweenUsers } = routes;
 
   const routeHandler = {
     intern: intern,
-    tutor: tutor
+    tutor: tutor,
+    admin: admin
   };
 
-  const appRoutes = user ? [...routeHandler[user.usertype], ...sharedBetweenUsers] : noUser;
+  const appRoutes = user ? [...routeHandler[user.user_type], ...sharedBetweenUsers] : noUser;
 
   return [...shared, ...appRoutes];
 };

@@ -1,6 +1,6 @@
 @import "@/styles/variables";
 
-.login-container {
+.login_container {
   display: flex;
   height: 100%;
   flex: 1;
@@ -13,39 +13,39 @@
     align-items: center;
     justify-content: center;
     height: 100%;
-  }
 
-  .banner {
-    box-shadow: $box-shadow-lg;
-    z-index: 999999;
-    display: none;
+    &__banner {
+      box-shadow: $box-shadow-lg;
+      z-index: 999999;
+      display: none;
 
-    @include lg {
+      @include lg {
+        display: flex;
+      }
+    }
+
+    &__login_form {
       display: flex;
-    }
-  }
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: $box-shadow-lg;
 
-  .login-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: $box-shadow-lg;
+      @include lg {
+        background-color: $background-color;
+        background-image: none;
+        background-size: none;
+        background-repeat: none;
+        background-position: none;
+        box-shadow: none;
+      }
 
-    @include lg {
-      background-color: $background-color;
-      background-image: none;
-      background-size: none;
-      background-repeat: none;
-      background-position: none;
-      box-shadow: none;
-    }
-
-    h4 {
-      margin-bottom: $margin-md;
+      h4 {
+        margin-bottom: $margin-md;
+      }
     }
 
-    .form-container {
+    &__form_container {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -60,15 +60,23 @@
         width: 70%;
       }
 
-      .wrapper {
+      &__wrapper {
         width: 100%;
         height: 100%;
         display: flex;
         flex-direction: column;
         overflow: hidden;
+
+        &__form_title {
+          padding: 0px $padding-md;
+
+          @include md {
+            padding: 0px $padding-xl;
+          }
+        }
       }
 
-      .form {
+      &__form {
         width: 100%;
         padding: 0px $padding-md;
         flex-grow: 1;
@@ -78,54 +86,75 @@
         @include md {
           padding: 0px $padding-xl;
         }
-      }
 
-      .form-title {
-        padding: 0px $padding-md;
-
-        @include md {
-          padding: 0px $padding-xl;
+        .generate-form-template__form_container {
+          grid-template-columns: repeat(1, minmax(0, 1fr));
+          gap: 10px;
         }
       }
     }
   }
-}
 
-.register-btn {
-  margin: 10px;
-  margin-top: 10px !important;
-}
+  &__create_account_cta {
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
 
-.divider {
-  font-size: 14px;
-  color: $gray;
-  margin-bottom: 10px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  text-align: center;
+    &__text {
+      font-size: $text-sm;
+      color: $gray;
+    }
 
-  padding: 0px $padding-md;
+    &__link {
+      font-weight: $semibold;
+      color: $primary_dark_15;
 
-  @include md {
-    padding: 0px $padding-xl;
-  }
+      cursor: pointer;
+      text-decoration: underline;
+      margin-left: 5px;
 
-  p {
-    margin: 0 10px; // Add margin around the text content
-    white-space: nowrap; // Ensure the text doesn't wrap to the next line
-    font-size: $text-sm;
-    color: $gray;
-  }
+      @include xl {
+        color: $primary;
+      }
 
-  &:before,
-  &:after {
-    content: "";
-    flex: 1;
-    border-bottom: 1px solid $lightgrey;
+      &:hover {
+        color: darken($primary, 10%);
+        font-weight: $bold;
+      }
+    }
 
-    height: 0;
+    &__divider {
+      font-size: 14px;
+      color: $gray;
+      margin-bottom: 10px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      text-align: center;
+
+      padding: 0px $padding-md;
+
+      @include md {
+        padding: 0px $padding-xl;
+      }
+
+      p {
+        margin: 0 10px;
+        white-space: nowrap;
+        font-size: $text-sm;
+        color: $gray;
+      }
+
+      &:before,
+      &:after {
+        content: "";
+        flex: 1;
+        border-bottom: 1px solid $lightgrey;
+
+        height: 0;
+      }
+    }
   }
 }

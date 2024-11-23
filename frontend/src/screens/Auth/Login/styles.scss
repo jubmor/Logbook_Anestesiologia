@@ -1,7 +1,7 @@
 @import "@/styles/variables";
 
-.login-container {
-  .forgot_password {
+.login_container {
+  &__forgot_password {
     margin-top: 20px;
     display: flex;
     justify-content: flex-end;
@@ -28,32 +28,9 @@
     }
   }
 
-  &__create_account_cta {
-    text-align: center;
-    margin-top: 20px;
-    width: 100%;
-
-    &__text {
-      font-size: $text-sm;
-      color: $gray;
-    }
-
-    &__link {
-      font-weight: $semibold;
-      color: $primary_dark_15;
-
-      cursor: pointer;
-      text-decoration: underline;
-      margin-left: 5px;
-
-      @include xl {
-        color: $primary;
-      }
-
-      &:hover {
-        color: darken($primary, 10%);
-        font-weight: $bold;
-      }
-    }
+  &__login_inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 }

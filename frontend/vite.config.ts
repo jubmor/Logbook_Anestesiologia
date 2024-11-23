@@ -4,13 +4,19 @@ import react from "@vitejs/plugin-react";
 import viteTsconfigPaths from "vite-tsconfig-paths";
 import { resolve } from "path";
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), viteTsconfigPaths()],
   test: {
     environment: "jsdom",
     globals: true,
-    setupFiles: "./vitest-setup.js"
+    setupFiles: "./src/__mocks__/setupMocks.tsx",
+    coverage: {
+      provider: "istanbul",
+      reporter: ["text", "json", "html"],
+      include: ["src/**/*.{ts,tsx,js,jsx}"],
+      exclude: ["node_modules", "test/**/*"],
+      reportsDirectory: "./coverage"
+    }
   },
   build: {
     chunkSizeWarningLimit: 1600
@@ -23,5 +29,8 @@ export default defineConfig({
     alias: {
       "@": resolve(__dirname, "src")
     }
+  },
+  optimizeDeps: {
+    exclude: ["chunk-ABLLX5HL.js"]
   }
 });

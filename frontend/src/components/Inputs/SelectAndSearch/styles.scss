@@ -30,4 +30,11 @@
       border-color: $primary;
     }
   }
+
+  .MuiInputBase-input::placeholder {
+    color: $textsecondary;
+    font-size: $text-sm;
+    font-style: italic;
+    opacity: 1;
+  }
 }

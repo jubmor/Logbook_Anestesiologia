@@ -1,3 +1,4 @@
+import { PATHS } from "@/routes/paths";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -21,7 +22,7 @@ const Error404 = () => {
           gap: 20
         }}
       >
-        <button onClick={() => navigate("/login")}>Login</button>
+        <button onClick={() => navigate(PATHS.LOGIN)}>Login</button>
         <button onClick={() => navigate("/")}>Home</button>
       </div>
     </div>

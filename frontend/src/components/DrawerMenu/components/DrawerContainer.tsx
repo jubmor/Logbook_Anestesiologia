@@ -8,7 +8,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { toggleDrawer } from "@/store/features/drawerMenu/module";
+import { toggleDrawer } from "@/store/drawerMenu/module";
 
 import "../styles.scss";
 import "@/styles/_variables.scss";

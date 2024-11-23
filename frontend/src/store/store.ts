@@ -1,9 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import authReducer from "./features/auth/module";
-import toasterReducer from "./features/toaster/module";
-import drawerMenuReducer from "./features/drawerMenu/module";
-// import recordFormReducer from "./features/recordForm/module";
+import authReducer from "./auth/module";
+import toasterReducer from "./toaster/module";
+import drawerMenuReducer from "./drawerMenu/module";
 
 export const store = configureStore({
   reducer: {

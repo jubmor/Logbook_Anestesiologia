@@ -9,4 +9,8 @@
 
 .styled_button__container {
   box-shadow: $box-shadow-md;
+
+  .MuiLinearProgress-bar {
+    color: red !important;
+  }
 }

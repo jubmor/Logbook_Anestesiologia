@@ -19,13 +19,13 @@ const Auth = () => {
 
   return (
     <Container>
-      <div className="login-container">
-        <div className="login-container__container banner">
-          <h1 className=" ">Welcome Back!</h1>
+      <div className="login_container">
+        <div className="login_container__container login_container__container__banner">
+          {/* <h1 className=" ">Welcome Back!</h1> */}
         </div>
 
-        <div className="login-container__container login-form">
-          <div className="form-container glassContainer">
+        <div className="login_container__container login_container__container__login_form">
+          <div className="login_container__container__form_container glassContainer">
             <Outlet />
           </div>
         </div>

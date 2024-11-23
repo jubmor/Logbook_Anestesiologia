@@ -21,8 +21,8 @@ type Props = {
   required?: boolean;
   multiple?: boolean;
   placeholder?: string;
-
   ref?: React.ForwardedRef<unknown>;
+  tooltip?: React.ReactNode;
 };
 
 const SelectAndSearch = ({
@@ -36,7 +36,7 @@ const SelectAndSearch = ({
   required,
   disabled,
   multiple = false,
-  placeholder
+  tooltip
 }: Props) => {
   const selectedOptions = multiple
     ? Array.isArray(value)
@@ -44,13 +44,17 @@ const SelectAndSearch = ({
       : []
     : options.find((option) => option.value === value) || null;
 
+  const defaultPlaceholder = multiple ? "Selecione as opções" : "Selecionar opção";
+  const showPlaceholder = !multiple ? (value ? false : true) : true;
+
   return (
     <InputWrapper
       label={label}
       error={error}
       errorText={errorText}
-      extraClass={containerExtraClass}
+      extraClass={`${containerExtraClass} ${error && errorText && "select_and_search_error"}`}
       required={required}
+      tooltip={tooltip}
     >
       <Autocomplete
         filterSelectedOptions
@@ -70,10 +74,18 @@ const SelectAndSearch = ({
         disableCloseOnSelect={multiple ? true : false}
         getOptionLabel={(option) => option.label}
         isOptionEqualToValue={(option, value) => option.value === value.value}
-        renderInput={(params) => <TextField {...params} label={label} placeholder={placeholder} />}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label={label}
+            placeholder={showPlaceholder ? defaultPlaceholder : ""}
+            InputLabelProps={{
+              shrink: true // Keeps the label always shrunk to prevent overlapping
+            }}
+          />
+        )}
         disabled={disabled}
         disableClearable
-        sx={{}}
       />
     </InputWrapper>
   );

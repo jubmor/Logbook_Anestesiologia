@@ -10,10 +10,11 @@ import NewRecordBody from "./components/NewRecordBody";
 import { useAppDispatch } from "@/store/hooks";
 import { RecordFormBasicInfoProps } from "@/types/Records";
 import { useNavigate } from "react-router-dom";
-import { showToaster } from "@/store/features/toaster/module";
+import { showToaster } from "@/store/toaster/module";
 import { GenerateFormRef } from "@/components/GenerateForm";
 
 import AddIcon from "@mui/icons-material/Add";
+import { BASE_API } from "@/config/endpoints";
 
 export type RecordFormHandlingRef = {
   getData: () => Promise<{
@@ -30,12 +31,9 @@ const NewRecord = () => {
   const [formHeader, setFormHeader] =
     useState<Partial<RecordFormBasicInfoProps>>(DEFAULT_FORM_HEADER);
 
-  const handleHeaderInput = (value: string, id: keyof RecordFormBasicInfoProps) => {
-    setFormHeader({ ...formHeader, [id]: value });
-  };
+  const isFormInitialized = formMode !== undefined;
 
   const isFormBasicInfoCompleted = validateFormBasicInfo(formHeader);
-  const isFormInitialized = formMode !== undefined;
 
   const recordFormRef = useRef<RecordFormHandlingRef>(null);
 
@@ -88,7 +86,7 @@ const NewRecord = () => {
     <Screen headerProps={headerProps}>
       <NewRecordBody
         formHeader={formHeader}
-        handleHeaderInput={handleHeaderInput}
+        setFormHeader={setFormHeader}
         formMode={formMode}
         recordFormRef={recordFormRef}
       />

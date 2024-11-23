@@ -3,7 +3,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { useNavigate } from "react-router-dom";
 import { PATHS } from "@/routes/paths";
-import { toggleDrawer } from "@/store/features/drawerMenu/module";
+import { toggleDrawer } from "@/store/drawerMenu/module";
 
 const NewReportBtn = () => {
   const isMenuOpen = useAppSelector((state) => state.drawerMenu.isOpen);
@@ -11,7 +11,7 @@ const NewReportBtn = () => {
   const dispatch = useAppDispatch();
 
   return (
-    <div className="new_report_container">
+    <div role="button" className="new_report_container">
       <div
         onClick={() => {
           isMenuOpen && dispatch(toggleDrawer());

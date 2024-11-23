@@ -5,13 +5,23 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { DrawerMenuItemProps } from "..";
 import { RouteProps } from "@/routes";
 
-import "../styles.scss";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { useScreenWidth } from "@/hooks/useScreenWidth";
-import { toggleDrawer } from "@/store/features/drawerMenu/module";
+import { toggleDrawer } from "@/store/drawerMenu/module";
+
+import { SvgIconProps } from "@mui/material";
+
+import "../styles.scss";
+
+export type CustomAction = {
+  action: () => void;
+  name: string;
+  displayName: string;
+  Icon: React.ComponentType<SvgIconProps>;
+};
 
 type Props = {
-  item: DrawerMenuItemProps | RouteProps;
+  item: DrawerMenuItemProps | RouteProps | CustomAction;
 };
 
 const MenuItem = ({ item }: Props) => {
@@ -26,15 +36,25 @@ const MenuItem = ({ item }: Props) => {
 
   const { Icon } = item;
 
-  const isRoot = item.path === "/" && location === "/";
-  const isActive = isRoot || (item.path !== "/" && location.startsWith(item.path));
+  const isRoot = "path" in item && item.path === "/" && location === "/";
+  const isActive =
+    isRoot || ("path" in item && item.path !== "/" && location.startsWith(item.path));
 
   const handlePress = () => {
-    if (!(screenWidth > 769)) {
-      dispatch(toggleDrawer());
+    if ("action" in item) {
+      item.action();
     }
 
-    navigate(item.path);
+    if ("path" in item) {
+      const isRoot = item.path === "/" && location === "/";
+      const isActive = isRoot || (item.path !== "/" && location.startsWith(item.path));
+
+      if (!(screenWidth > 769)) {
+        dispatch(toggleDrawer());
+      }
+
+      navigate(item.path); // TypeScript knows item is DrawerMenuItemProps | RouteProps here
+    }
   };
 
   return (

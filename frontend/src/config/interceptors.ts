@@ -1,7 +1,8 @@
 import axios from "axios";
 
 import { store } from "@/store/store";
-import { showToaster } from "@/store/features/toaster/module";
+import { showToaster } from "@/store/toaster/module";
+import { logout } from "@/store/auth/module";
 
 const request = axios.create({
   timeout: 1000 * 5
@@ -9,11 +10,22 @@ const request = axios.create({
 
 request.interceptors.request.use(
   (config) => {
-    const user = store.getState().auth;
+    //  const user = store.getState().auth;
 
-    if (user && user.accessToken) {
-      // Add the token to the request headers if available
-      config.headers.Authorization = `Bearer ${user.accessToken}`;
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+
+    if (config.method === "post" && config.data) {
+      const urlEncodedData = new URLSearchParams();
+
+      Object.keys(config.data).forEach((key) => {
+        urlEncodedData.append(key, config.data[key]);
+      });
+
+      config.data = urlEncodedData;
+      config.headers["Content-Type"] = "application/x-www-form-urlencoded";
     }
 
     return config;
@@ -32,12 +44,12 @@ request.interceptors.request.use(
 request.interceptors.response.use(
   (response) => response,
   (error) => {
-    // Handle response errors here
     if (error.response) {
       const status = error.response.status;
       const data = error.response.data;
 
       if (status === 401) {
+        store.dispatch(logout());
         store.dispatch(
           showToaster({
             message: "Unauthorized access. Please log in again.",

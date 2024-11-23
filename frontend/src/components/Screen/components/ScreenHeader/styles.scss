@@ -63,6 +63,16 @@
       padding: $padding-xs;
       border-radius: $border-radius-lg;
       box-shadow: $box-shadow-md;
+      transition: $transition-duration;
+
+      h5 {
+        font-size: 20px;
+      }
+
+      &:active {
+        opacity: 0.6;
+        transform: scale(0.95);
+      }
 
       svg {
         color: white;

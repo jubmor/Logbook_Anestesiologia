@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "@mui/material/Button";
+import { CircularProgress } from "@mui/material";
 import "./styles.scss";
 
 interface DefaultButtonProps {
@@ -11,6 +12,7 @@ interface DefaultButtonProps {
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
   className?: string;
+  loading?: boolean;
 }
 
 interface SubmitFormButtonProps extends DefaultButtonProps {
@@ -33,7 +35,8 @@ const StyledButton: React.FC<Props> = ({
   text,
   startIcon,
   endIcon,
-  className = ""
+  className = "",
+  loading
 }) => {
   return (
     <div className="styled_button__container">
@@ -52,7 +55,7 @@ const StyledButton: React.FC<Props> = ({
           }
         }}
       >
-        {text}
+        {loading ? <CircularProgress size="30px" color="inherit" /> : text}
       </Button>
     </div>
   );

@@ -3,7 +3,7 @@ export type UserProps = {
   first_name: string;
   last_name: string;
   email: string;
-  usertype: UserType;
+  user_type: UserType;
 };
 
 export type UserType = "intern" | "tutor" | "admin";

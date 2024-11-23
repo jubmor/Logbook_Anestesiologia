@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { toggleDrawer } from "@/store/features/drawerMenu/module";
+import { toggleDrawer } from "@/store/drawerMenu/module";
 import DrawerMenu from "@/components/DrawerMenu";
 
 import getRoutes from "@/routes";

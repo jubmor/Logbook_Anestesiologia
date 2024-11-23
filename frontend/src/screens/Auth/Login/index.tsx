@@ -7,8 +7,8 @@ import StyledInput from "@/components/Inputs/StyledInput";
 import { PATHS } from "@/routes/paths";
 import { UserProps } from "@/types/User";
 
-import { setUser } from "@/store/features/auth/module";
-import { showToaster } from "@/store/features/toaster/module";
+import { setAccessToken, setUser } from "@/store/auth/module";
+import { showToaster } from "@/store/toaster/module";
 import { useAppDispatch } from "@/store/hooks";
 
 import request from "@/config/interceptors";
@@ -22,6 +22,7 @@ const Login = () => {
 
   const [form, setForm] = useState<LoginFormProps>(DEFAULT_LOGIN_FORM);
   const [formErrors, setFormErrors] = useState<LoginFormErrorsProps>(DEFAULT_LOGIN_FORM_ERRORS);
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = event.target;
@@ -38,32 +39,30 @@ const Login = () => {
 
     if (Object.keys(formErrors).length === 0) {
       setFormErrors(DEFAULT_LOGIN_FORM_ERRORS);
-      // handleLogin();
-      handleFakeLogin();
+      form.username === "intern" || form.username === "tutor" ? handleFakeLogin() : handleLogin();
     } else {
       setFormErrors(formErrors);
     }
   };
 
   const handleLogin = async () => {
+    setLoading(true);
     try {
-      console.log(END_POINT.LOGIN);
       const response = await request.post(END_POINT.LOGIN, form);
-
-      console.log(response);
-
-      // if (false) {
-      //   dispatch(setUser(user[form.username]));
-      //   navigate("/");
-      // }
+      dispatch(setAccessToken(response.data.access_token));
     } catch (e: any) {
       dispatch(
         showToaster({
-          message: "Invalid username or password",
+          message: e.response.data.detail
+            ? e.response.data.detail.length > 0
+              ? e.response.data.detail.length[0].msg
+              : e.response.data.detail
+            : "Por favor contactar com o supporte.",
           severity: "error"
         })
       );
-      throw new Error(e);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -77,25 +76,25 @@ const Login = () => {
       }
       navigate("/");
     } else {
-      setFormErrors({ username: "Use `intern` or `tutor` as username" });
+      setFormErrors({ username: "Use `intern` or `tutor` as username and any password" });
     }
   };
 
   return (
-    <div className="wrapper">
-      <h4 className="form-title">Login</h4>
-      <form className="form" onSubmit={handleSubmit}>
-        <StyledInput
-          id="username"
-          value={form.username}
-          onChange={handleInputChange}
-          label="Utilizador / Email"
-          type="text"
-          autoComplete="username"
-          error={!!formErrors.username}
-          errorText={formErrors.username}
-        />
-        <div>
+    <div className="login_container__container__form_container__wrapper">
+      <h4 className="login_container__container__form_container__wrapper__form_title">Login</h4>
+      <form className="login_container__container__form_container__form " onSubmit={handleSubmit}>
+        <div className="login_container__login_inputs">
+          <StyledInput
+            id="username"
+            value={form.username}
+            onChange={handleInputChange}
+            label="Utilizador / Email"
+            type="text"
+            autoComplete="username"
+            error={!!formErrors.username}
+            errorText={formErrors.username}
+          />
           <StyledInput
             id="password"
             value={form.password}
@@ -106,26 +105,27 @@ const Login = () => {
             error={!!formErrors.password}
             errorText={formErrors.password}
           />
-          <div className="forgot_password">
-            <p onClick={() => navigate(PATHS.RECOVER_PASSWORD)}>Recuperar password</p>
-          </div>
+        </div>
+        <div className="login_container__forgot_password">
+          <p onClick={() => navigate(PATHS.RECOVER_PASSWORD)}>Recuperar password</p>
         </div>
         <StyledButton
           type="submit"
           disabled={form.username === "" || form.password === ""}
           text="Sign In"
+          loading={loading}
         />
       </form>
 
-      <div className="login-container__create_account_cta">
-        <div className="divider">
+      <div className="login_container__create_account_cta">
+        <div className="login_container__create_account_cta__divider">
           <p>ou</p>
         </div>
-        <div className="login-container__create_account_cta__text">
+        <div className="login_container__create_account_cta__text">
           Não tem conta?
           <span
             onClick={() => navigate(PATHS.REGISTER)}
-            className="login-container__create_account_cta__link"
+            className="login_container__create_account_cta__link"
           >
             Registar agora
           </span>
@@ -180,10 +180,5 @@ const validateForm = (form: LoginFormProps): LoginFormErrorsProps => {
   return errors;
 };
 
-const validateEmail = (email: string): boolean => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-};
-
-const internUser: UserProps = { ...defaultDataUser, usertype: "intern" };
-const tutorUser: UserProps = { ...defaultDataUser, usertype: "tutor" };
+const internUser: UserProps = { ...defaultDataUser, user_type: "intern" };
+const tutorUser: UserProps = { ...defaultDataUser, user_type: "tutor" };

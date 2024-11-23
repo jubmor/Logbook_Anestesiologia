@@ -25,6 +25,8 @@ type Props = {
   ref?: React.ForwardedRef<unknown>;
   multiple?: boolean;
   placeholder?: string;
+
+  tooltip?: React.ReactNode;
 };
 
 const StyledSelector = ({
@@ -40,9 +42,11 @@ const StyledSelector = ({
   disabled,
   required,
   multiple,
-  placeholder
+  placeholder,
+  tooltip
 }: Props) => {
   const safeValue = value ?? (multiple ? [] : "");
+
   return (
     <InputWrapper
       label={label}
@@ -50,6 +54,7 @@ const StyledSelector = ({
       errorText={errorText}
       extraClass={containerExtraClass}
       required={required}
+      tooltip={tooltip}
     >
       <FormControl variant="outlined">
         <Select
@@ -87,12 +92,6 @@ const StyledSelector = ({
             }
           }}
         >
-          {/*   {!multiple && (
-            <MenuItem value={""}>
-              <em> - </em>
-            </MenuItem>
-          )} */}
-
           {options.map((option, idx) => (
             <MenuItem key={`${idx}_${option.value}`} value={option.value}>
               {multiple && <Checkbox checked={(value && value.includes(option.value)) || false} />}

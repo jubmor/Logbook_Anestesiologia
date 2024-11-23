@@ -1,13 +1,9 @@
 @import "@/styles/variables";
 
 .input-container {
-  //width: 100%;
-  //  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   gap: 6px;
-  //  border-radius: 4px;
-  //  background: white;
   top: -5;
   p {
     font-size: $text-sm;
@@ -21,20 +17,42 @@
     font-weight: bold;
   }
 
-  &__error {
-    color: $error;
-    font-weight: $semibold;
-    font-size: $text-sm;
-  }
-
-  &__required-indicator {
-    color: $error;
-    margin-left: 4px;
-    font-weight: bold;
-  }
-
-  &__label_wrapper {
+  &__header_wrapper {
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    &__label_wrapper {
+      display: flex;
+      flex: 1;
+    }
+
+    &__required-indicator {
+      color: $error;
+      margin-left: 4px;
+      font-weight: bold;
+    }
+
+    &__error {
+      color: $error;
+      font-weight: $semibold;
+      font-size: $text-sm;
+    }
+
+    &__tooltip_icon {
+      color: $textsecondary;
+      width: 20px !important;
+      height: 20px !important;
+    }
+  }
+}
+
+.select_and_search_error {
+  .MuiOutlinedInput-root {
+    fieldset {
+      border: 1px solid $error;
+    }
   }
 }
 

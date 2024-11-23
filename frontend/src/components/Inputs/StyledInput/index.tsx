@@ -30,6 +30,7 @@ export type Props = {
   noBorder?: boolean;
   required?: boolean;
   ref?: React.ForwardedRef<unknown>;
+  tooltip?: React.ReactNode;
 };
 
 export type AutoCompleteOptions =
@@ -62,7 +63,8 @@ const StyledInput = ({
   autoComplete,
   noBorder,
   containerExtraClass,
-  required
+  required,
+  tooltip
 }: Props) => {
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -83,6 +85,7 @@ const StyledInput = ({
       errorText={errorText}
       extraClass={containerExtraClass}
       required={required}
+      tooltip={tooltip}
     >
       <TextField
         id={id}
@@ -95,7 +98,7 @@ const StyledInput = ({
         onChange={onChange}
         disabled={disabled}
         inputProps={{ ...inputProps }}
-        className={`input ${extraClass}`}
+        className={`input ${multiline && "input__multiline__no_padding"} ${extraClass}`}
         placeholder={placeholder ? placeholder : label}
         hiddenLabel={true}
         autoComplete={autoComplete}
@@ -105,6 +108,7 @@ const StyledInput = ({
         error={error}
         sx={{
           "& .MuiOutlinedInput-root": {
+            //  padding:0,
             "& fieldset": {
               border: noBorder ? "none" : "",
               top: label ? "" : "0px"

@@ -1,9 +1,9 @@
 import React from "react";
 
-import "./styles.scss";
 import UserContainer from "./components/UserContainer";
 import Screen from "@/components/Screen";
 
+import "./styles.scss";
 const UserProfile = () => {
   return (
     <Screen>

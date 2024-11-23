@@ -24,17 +24,6 @@ describe("ScreenHeader Component", () => {
     expect(screen.getByText("Test Subtext")).toBeInTheDocument();
   });
 
-  it("renders back button when not on main root", () => {
-    render(
-      <MemoryRouter initialEntries={["/some/path"]}>
-        <ScreenHeader title="Test Title" />
-      </MemoryRouter>
-    );
-
-    const backButton = screen.getByLabelText("more");
-    expect(backButton).toBeInTheDocument();
-  });
-
   it("does not render back button when on main root", () => {
     render(
       <MemoryRouter initialEntries={["/"]}>

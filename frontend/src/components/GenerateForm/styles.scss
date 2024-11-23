@@ -20,4 +20,11 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
+
+  .generate-form-styled-input {
+    .MuiOutlinedInput-root {
+      border: 1px solid red;
+      padding: 0 !important;
+    }
+  }
 }

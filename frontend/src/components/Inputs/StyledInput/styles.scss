@@ -5,6 +5,12 @@
   background: $white;
   border-radius: $border-radius-4xl;
 
+  &__multiline__no_padding {
+    .MuiInputBase-root {
+      padding: 0 !important;
+    }
+  }
+
   .MuiInputBase-input::placeholder {
     color: $textsecondary;
     font-size: $text-sm;
@@ -28,8 +34,8 @@
       display: none;
     }
   }
+
   .MuiOutlinedInput-root {
-    //  border-radius: $border-radius-4xl;
     &:hover fieldset {
       border-color: $primary;
     }
