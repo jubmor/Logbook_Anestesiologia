@@ -18,6 +18,8 @@ import { logout as logoutUser } from "@/store/auth/module";
 
 import "./styles.scss";
 import { store } from "@/store/store";
+import { useNavigate } from "react-router-dom";
+import { PATHS } from "@/routes/paths";
 
 export type DrawerMenuItemProps = {
   path: string;
@@ -28,6 +30,7 @@ export type DrawerMenuItemProps = {
 
 const DrawerMenu = () => {
   const user = useAppSelector((state) => state.auth.user);
+  const navigate = useNavigate();
 
   const menu = useMemo(() => {
     const order = ["Dashboard", "Casuistic", "Cases", "Internships", "UserProfile"];
@@ -47,6 +50,16 @@ const DrawerMenu = () => {
         return a.name.localeCompare(b.name);
       });
   }, [user]);
+
+  const logout: CustomAction = {
+    action: () => {
+      store.dispatch(logoutUser());
+      navigate(PATHS.LOGIN);
+    },
+    displayName: "Sair",
+    Icon: LogoutIcon,
+    name: "logout"
+  };
 
   return (
     <DrawerContainer>
@@ -71,11 +84,5 @@ const settings: DrawerMenuItemProps = {
   path: "settings",
   displayName: "Definições",
   Icon: SettingsIcon,
-  name: "logout"
-};
-const logout: CustomAction = {
-  action: () => store.dispatch(logoutUser()),
-  displayName: "Sair",
-  Icon: LogoutIcon,
-  name: "logout"
+  name: "settings"
 };

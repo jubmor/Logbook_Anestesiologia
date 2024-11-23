@@ -1,0 +1,68 @@
+@import "@/styles/variables";
+
+.not_found_page {
+  display: flex;
+  flex: 1;
+  justify-items: center;
+  align-items: center;
+
+  &__center_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    flex-direction: column;
+    gap: 20px;
+
+    &__title_container {
+      display: flex;
+      flex-direction: row;
+      &__text {
+        font-size: 15rem;
+        font-weight: $extrabold;
+        color: $text;
+        z-index: 3;
+        position: relative;
+        top: 6px;
+      }
+
+      &__text.tilt {
+        transform: rotate(-8deg); // Tilts the element to the left
+        display: inline-block; // Ensure rotation doesn't affect inline flow
+        z-index: 1;
+        position: relative;
+        top: 4px;
+      }
+
+      &__img {
+        width: 190px;
+        z-index: 2;
+        margin-right: -26px;
+        margin-left: -20px;
+      }
+    }
+
+    &__information_container {
+      max-width: 90%;
+
+      @include md {
+        max-width: 60%;
+      }
+      @include lg {
+        max-width: 40%;
+      }
+
+      > p {
+        font-size: $text-2xl;
+        font-weight: $extrabold;
+        text-align: center;
+        color: $text;
+        line-height: 1.1;
+      }
+    }
+
+    &__actions_container {
+      width: 260px;
+    }
+  }
+}
