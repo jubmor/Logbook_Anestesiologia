@@ -1,0 +1,49 @@
+services:
+  db:
+    image: postgres:15.8-alpine
+    volumes:
+      - db:/var/lib/postgresql/data
+    restart: unless-stopped
+    environment:
+      - POSTGRES_PASSWORD=logbook
+      - POSTGRES_USER=logbook
+      - POSTGRES_DB=logbook
+      - PGUSER=logbook
+    healthcheck:
+      test: ["CMD-SHELL", "sh -c 'pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}'"]
+      interval: 5s
+      timeout: 60s
+      retries: 5
+      # start_period: 5s
+
+  # atlas:
+  #   image: arigaio/atlas:latest
+  #   command: >
+  #     migrate apply --url postgresql://logbook:logbook@db:5432/logbook?sslmode=disable
+  #   depends_on:
+  #     - db
+  #       # condition: service_healthy
+  #   volumes:
+  #     - ./migrations/:/migrations
+
+  app:
+    build: 
+      context: .
+      target: base
+    entrypoint: sh -c "atlas schema apply --auto-approve -u "postgresql://logbook:logbook@db:5432/logbook?sslmode=disable" --to file://schema.hcl && uvicorn src.main:app --reload --host 0.0.0.0 --port 8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    environment:
+      - POSTGRES_PASSWORD=logbook
+      - POSTGRES_USER=logbook
+      - POSTGRES_DB=logbook
+      - APP_PORT=8000
+    volumes:
+      - .:/app
+
+volumes:
+  db:

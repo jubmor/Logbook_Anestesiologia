@@ -1,0 +1,10 @@
+fastapi==0.114.2
+fastapi[standard]==0.114.2
+alembic==1.13.2
+psycopg2-binary
+sqlalchemy
+atlas-provider-sqlalchemy
+pydantic
+fastapi-login
+passlib[bcrypt]
+isort
